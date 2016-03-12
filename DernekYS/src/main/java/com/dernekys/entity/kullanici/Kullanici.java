@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import com.dernekys.entity.EBase;
 
 @Entity
-@Table(name = "USRS")
+@Table(name = "KULLANICI")
 public class Kullanici extends EBase {
 
 	/**
