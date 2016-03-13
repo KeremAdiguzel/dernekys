@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:b="http://bootsfaces.net/ui">
+
+  <ui:remove>
+ 
+  </ui:remove>
+  <b:navBar brand="BootsFaces"
+    brandHref="http://www.bootsfaces.net/" inverse="true"
+    position="top" sticky="true">
+    <b:container>
+      <b:navbarLinks>
+        <b:navLink />
+        <b:navLink />
+        <b:navbarLinks>
+             <b:navLink outcome="/index" value="Home" iconAwesome="home" />
+        </b:navbarLinks>
+        <b:dropMenu value="Integration">
+          <b:navLink value="Kullanıcı İşlemleri"
+            outcome="/secure/kullanici/kullanici.xhtml" icon="tasks" />
+          <b:navLink value="OmniFaces" outcome="/integration/OmniFaces"
+            icon="tasks" />
+          <b:navLink value="ButterFaces" outcome="/integration/ButterFaces"
+            icon="tasks" />
+          <ui:remove>
+            <b:navLink value="undocumented components"
+              outcome="/undocumented" icon="question-circle" />
+          </ui:remove>
+        </b:dropMenu>
+
+        <b:dropMenu value="Layout">
+          <b:navLink value="Basic Layout and Grid System"
+            outcome="/layout/basic" iconAwesome="table" />
+          <b:navLink value="Simplified Grid System"
+            outcome="/layout/simplifiedLayout" iconAwesome="table" />
+          <b:navLink value="Themes" outcome="/layout/themes" />
+          <b:navLink value="RTL (right-to-left) support"
+            outcome="/layout/rtl" iconAwesome="table" />
+          <b:navLink value="CSS files, JS files and CDNs"
+            outcome="/layout/resourcemanagement" />
+          <b:navLink value="Sidebars (NavLinks and NavCommandLinks)"
+            outcome="/layout/navLinks" icon="list" />
+          <b:navLink value="Menus (Navbars)" outcome="/layout/navbars"
+            iconAwesome="ellipsis-h" />
+          <b:navLink value="Navigation and AJAX" outcome="/layout/navigationAndAJAX"
+            iconAwesome="ellipsis-h" />
+          <b:navLink value="Panels" outcome="/layout/panels"
+            iconAwesome="list-alt" />
+          <b:navLink value="Grids" outcome="/layout/panelgrids"
+            iconAwesome="th-large" />
+          <b:navLink value="Icons" outcome="/layout/icons"
+            iconAwesome="photo" />
+          <b:navLink value="Image" outcome="/layout/Image"
+            iconAwesome="photo" />
+          <b:navLink value="Jumbotron" outcome="/layout/jumbotron" />
+          <b:navLink value="Wells" outcome="/layout/wells" />
+        </b:dropMenu>
+
+
+
+      </b:navbarLinks>
+      <b:navbarLinks pull="right">
+        <h:form style="display:inline" styleClass="form-inline">
+
+          <b:commandButton class="theme-selector-button" value="select"
+            action="#{theme.selectTheme}" style="display:none" />
+        </h:form>
+      </b:navbarLinks>
+
+      <b:navbarLinks pull="right">
+        <b:navLink  value="Aktif Kullanıcı" />
+      </b:navbarLinks>
+    </b:container>
+  </b:navBar>
+
+</ui:fragment>

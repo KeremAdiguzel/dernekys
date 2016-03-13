@@ -1,23 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/layout/template.xhtml">
 
-<h:head>
-	<title>Dernek Yönetim Sistemi</title>
-</h:head>
-<h:body>
-	<h2>Kullanıcı İşlemleri</h2>
-	<h:form>
-		<p:outputLabel value="#{kullaniciBean.mesaj}"></p:outputLabel>
+	<ui:define name="pageContent">
+		<h2>Kullanıcı İşlemleri</h2>
+		<h:form>
 
-		<p:commandButton actionListener="#{kullaniciBean.mesajVer}" value="Kaydet"></p:commandButton>
+			<p:dataTable var="kullanici" value="#{kullaniciBean.kullaniciListe}"
+			rows="10"
+		 paginator="true" 
+		 paginatorTemplate=" {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		 rowsPerPageTemplate="5,10,15">
 
-	</h:form>
+				<p:column headerText="No">
+					<h:outputText value="#{kullanici.id}" />
+				</p:column>
 
-</h:body>
+				<p:column headerText="Kullanıcı Adı">
+					<h:outputText value="#{kullanici.username}" />
+				</p:column>
 
-</html>
+				<p:column headerText="E-Mail">
+					<h:outputText value="#{kullanici.email}" />
+				</p:column>
+
+				<p:column headerText="Son Bağlantı Zamanı">
+					<h:outputText value="#{kullanici.sonBaglanti}" />
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

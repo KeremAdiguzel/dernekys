@@ -1,14 +1,14 @@
 package com.dernekys.mbean.uyelik;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
-import com.dernekys.entity.EBase;
 
 //Okutanlar
 @ManagedBean(name = "uyelikBean")
 @ViewScoped
-public class UyelikBean extends EBase {
+public class UyelikBean implements Serializable {
 
 	private static final long serialVersionUID = -7587014621665755109L;
 	

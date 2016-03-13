@@ -4,20 +4,18 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/JPAHib</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/DernekYS</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">root</property>
     
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hibernate.transaction.auto_close_session">true</property>
+
     
-    <mapping class="com.vektorel.kutuphane.entity.Kisi"/>
-    <mapping class="com.vektorel.kutuphane.entity.Kullanici"/>
-    <mapping class="com.vektorel.kutuphane.entity.Kitap"/>
-    <mapping class="com.vektorel.kutuphane.entity.KitapOdunc"/>
+    <mapping class="com.dernekys.entity.EBase"/>
+    <mapping class="com.dernekys.entity.kullanici.Kullanici"/>
+
 <!--    <mapping package="com.vektorel.kutuphane.entity"/>-->
   </session-factory>
 </hibernate-configuration>

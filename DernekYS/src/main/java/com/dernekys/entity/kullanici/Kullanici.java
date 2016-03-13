@@ -2,11 +2,19 @@ package com.dernekys.entity.kullanici;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.dernekys.entity.EBase;
 
+//tt
 @Entity
 @Table(name = "KULLANICI")
 public class Kullanici extends EBase {
@@ -22,6 +30,10 @@ public class Kullanici extends EBase {
 	private String email;
 	private Date sonBaglanti;
 
+	@Id
+	@GeneratedValue(generator="seq_kullanici",strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(name="seq_kullanici",sequenceName="seq_kullanici",allocationSize=1,initialValue=1)
+	@Column(name="id")
 	public Long getId() {
 		return id;
 	}
@@ -30,6 +42,7 @@ public class Kullanici extends EBase {
 		this.id = id;
 	}
 
+	@Column(name="username",unique=true,length=100)
 	public String getUsername() {
 		return username;
 	}
@@ -38,6 +51,7 @@ public class Kullanici extends EBase {
 		this.username = username;
 	}
 
+	@Column(name="password",length=100)
 	public String getPassword() {
 		return password;
 	}
@@ -46,6 +60,7 @@ public class Kullanici extends EBase {
 		this.password = password;
 	}
 
+	@Column(name="email",length=200)
 	public String getEmail() {
 		return email;
 	}
@@ -54,6 +69,8 @@ public class Kullanici extends EBase {
 		this.email = email;
 	}
 
+	@Column(name="son_baglanti_zamani")
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getSonBaglanti() {
 		return sonBaglanti;
 	}
