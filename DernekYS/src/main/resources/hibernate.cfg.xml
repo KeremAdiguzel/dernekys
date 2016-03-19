@@ -16,7 +16,7 @@
 		<mapping class="com.dernekys.entity.EBase" />
 		<mapping class="com.dernekys.entity.kullanici.Kullanici" />
 		<mapping  class="com.dernekys.mbean.demirbas.Demirbaslar"/>
-		<mapping  class="com.dernekys.mbean.duyuru.Duyuru"/>
+		<mapping  class="com.dernekys.entity.duyuru.Duyuru"/>
 
 		<!-- <mapping package="com.vektorel.kutuphane.entity"/> -->
 	</session-factory>
