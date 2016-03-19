@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 import com.dernekys.entity.EBase;
 
 @Entity
-@Table(name="Demirbaþlar Tablosu")
+@Table(name="DEMIRBAS")
 public class Demirbaslar extends EBase {
 	
 	private static final long serialVersionUID =556;
