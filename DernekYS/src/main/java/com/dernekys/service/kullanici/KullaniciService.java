@@ -20,26 +20,40 @@ public class KullaniciService implements IBaseService<Kullanici>{
 
 	@Override
 	public Kullanici getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Kullanici) new BaseService().getById(Kullanici.class, id);
 	}
 
 	@Override
 	public Kullanici save(Kullanici obj) throws DbException {
-		// TODO Auto-generated method stub
-		return null;
+        if(obj==null)
+            throw new DbException("Kullanýcý Adý Boþ Olmamalýdýr");
+        if(obj.getUsername()==null || obj.getUsername().equals(""))
+            throw new DbException("Kullanýcý Adý Boþ Olmamalýdýr");
+        if(obj.getEmail()==null || obj.getEmail().equals(""))
+            throw new DbException("Kullanýcý Email Boþ Olmamalýdýr");
+        
+        return (Kullanici) new BaseService().save(obj);
 	}
 
 	@Override
 	public Boolean delete(Kullanici obj) throws DbException {
-		// TODO Auto-generated method stub
-		return null;
+		return  new BaseService().delete(obj);
 	}
 
 	@Override
 	public Kullanici update(Kullanici obj) throws DbException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void deleteById(Long id) {
+		
+		Kullanici silinecekKullanici = getById(id);
+		try {
+			delete(silinecekKullanici);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

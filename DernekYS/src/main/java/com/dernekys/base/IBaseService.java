@@ -4,13 +4,14 @@
  */
 package com.dernekys.base;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author vektorel
  */
-public interface IBaseService<T> {
+public interface IBaseService<T> extends Serializable {
     
     public List<T> getAll();
     

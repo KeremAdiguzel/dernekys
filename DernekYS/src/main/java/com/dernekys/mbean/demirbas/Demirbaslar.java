@@ -45,7 +45,7 @@ public class Demirbaslar extends EBase {
 		this.id = id;
 	}
 
-	@Column(name = "Ýsim-Ýþlev", length = 20)
+	@Column(name = "ozellik", length = 20)
 	public String getOzellik() {
 		return ozellik;
 	}
@@ -90,7 +90,7 @@ public class Demirbaslar extends EBase {
 		this.model = model;
 	}
 
-	@Column(name = "Taþýnýrlýk", length = 40)
+	@Column(name = "tasinirlik", length = 40)
 	public String getTasinirlik() {
 		return tasinirlik;
 	}
@@ -108,7 +108,7 @@ public class Demirbaslar extends EBase {
 		this.yer = yer;
 	}
 
-	@Column(name = "Kimde - Nerede", length = 100)
+	@Column(name = "Kimde_Nerede", length = 100)
 	public String getOdunc() {
 		return odunc;
 	}
@@ -117,7 +117,7 @@ public class Demirbaslar extends EBase {
 		this.odunc = odunc;
 	}
 
-	@Column(name = "Alýnma Tarihi", length = 100)
+	@Column(name = "alinma_tarihi", length = 100)
 	@Temporal(TemporalType.DATE)
 	public java.util.Date getIlkTarih() {
 		return ilkTarih;

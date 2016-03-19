@@ -6,13 +6,13 @@
 	template="/layout/template.xhtml">
 
 	<ui:define name="pageContent">
-		<h2>Kullanıcı İşlemleri</h2>
-		<h:form>
 
-			<p:dataTable var="kullanici" value="#{kullaniciBean.kullaniciListe}"
-				rows="10" paginator="true"
+		<h:form id="frmKullanici">
+
+			<p:dataTable  id="tblKullanici"  var="kullanici" value="#{kullaniciBean.kullaniciListe}"
+				rows="10" paginator="true" paginatorPosition="bottom"
 				paginatorTemplate=" {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15">
+				rowsPerPageTemplate="10,50,100">
 
 				<p:column headerText="No">
 					<h:outputText value="#{kullanici.id}" />
@@ -30,9 +30,53 @@
 					<h:outputText value="#{kullanici.sonBaglanti}" />
 				</p:column>
 
+				<p:column headerText="İşlemler" width="90">
+					<p:commandButton icon="ui-icon-trash" update=":frmKullanici:tblKullanici" actionListener="#{kullaniciBean.sil(kullanici.id)}">
+						<p:confirm header="Silme Onay" message="Kayıt Silinsin mi ?" icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:commandButton icon="ui-icon-pencil"></p:commandButton>
+				</p:column>
+				
+				<f:facet name="header">
+					<h4>Kullanıcı Listesi</h4>
+			    </f:facet>
+			    
+				<f:facet name="footer">
+					<p:commandButton value="Yeni" icon="ui-icon-plus" onclick="PF('dlgYeniKullanici').show();"></p:commandButton>
+			    </f:facet>
 			</p:dataTable>
-
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		        <p:commandButton value="Evet" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="Hayır" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
+			
+			<p:dialog id="dlgYeniKullanici" modal="true" footer="Kullanıcı Detaylarını Giriniz"
+			 resizable="false" closable="false" draggable="false" widgetVar="dlgYeniKullanici"
+			 closeOnEscape="true" responsive="true" fitViewport="true">
+			 		<f:facet name="header">
+				      Yeni Kullanıcı
+				    </f:facet>
+				<p:panelGrid columns="2">
+				   
+				    <h:outputText value="Kullanıcı Adı:" />
+				    <p:inputText value="#{kullaniciBean.kullanici.username}" />
+				 
+				    <h:outputText value="Kullanıcı Şifre:" />
+				    <p:password value="#{kullaniciBean.kullanici.password}" />
+				 
+				   <h:outputText value="Kullanıcı Email:" />
+				    <p:inputText value="#{kullaniciBean.kullanici.email}" />
+				
+					<p:commandButton value="İptal" icon="ui-icon-cancel" onclick="PF('dlgYeniKullanici').hide();"></p:commandButton>
+					<p:commandButton value="Kaydet" icon="ui-icon-disk" update=":frmKullanici:tblKullanici :frmKullanici:dlgYeniKullanici"  actionListener="#{kullaniciBean.kaydet}" oncomplete="PF('dlgYeniKullanici').hide();"></p:commandButton>
+				</p:panelGrid>
+			
+			</p:dialog>
 		</h:form>
+		
+		
+		
 	</ui:define>
 
 </ui:composition>
