@@ -1,0 +1,142 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/layout/template.xhtml">
+	<ui:define name="pageContent">
+		<h:form id="form">
+			<p:growl id="msgs" showDetail="true" />
+
+			<p:dataTable id="demirbasBean" var="demirbas"
+				value="#{demirbasBean.demirbasListe}" editable="true"
+				style="margin-bottom:20px">
+				<f:facet name="header">
+           Row Editing
+       </f:facet>
+
+				<p:ajax event="rowEdit" listener="#{demirbasBean.save}"
+					update=":form:msgs" />
+				<p:ajax event="rowEditCancel" listener="#{demirbasBean.onRowCancel}"
+					update=":form:msgs" />
+
+				<p:column headerText="Id">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{demirbas.id}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput" value="#{demirbasBean.demirbas.id}"
+								style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="İslev">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{demirbas.ozellik}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{demirbasBean.demirbas.ozellik}" style="width:100%"
+								label="Ozellik" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="Adet">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{demirbas.adet}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{demirbasBean.demirbas.adet}" style="width:100%"
+								label="Year" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="Marka">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{demirbas.marka}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{demirbasBean.demirbas.marka}" style="width:100%"
+								label="Marka" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="Model">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{demirbas.model}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{demirbasBean.demirbas.model}" style="width:100%"
+								label="Model" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="Yer">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{demirbas.yer}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{demirbasBean.demirbas.yer}" style="width:100%"
+								label="Yer" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+			
+				<p:column headerText="Odunc">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{demirbas.odunc}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{demirbasBean.demirbas.odunc}" style="width:100%"
+								label="Odunc" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+
+
+
+				<p:column style="width:32px">
+					<p:rowEditor />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+
+
+
+
+		<h2>Demirbas</h2>
+		<h:form>
+
+			<p:dataTable var="demirbas" value="#{demirbasBean.demirbasListe}"
+				rows="10" paginator="true"
+				paginatorTemplate=" {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+
+				<p:column headerText="id">
+					<h:outputText value="#{demirbas.id}" />
+				</p:column>
+
+				<p:column headerText="Konu">
+					<h:outputText value="#{demirbas.adet}" />
+				</p:column>
+
+
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+
+
+
+
+</ui:composition>
